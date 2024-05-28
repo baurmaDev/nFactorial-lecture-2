@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Presentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css" id="theme">
+    <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <!-- slide 1 -->
+            <section>
+                <h1>My Presentation</h1>
+                <p>Welcome to my Reveal.js presentation!</p>
+            </section>
+
+            <!-- slide 2 -->
+            <section>
+                <h1>States</h1>
+                <img src="images/termostat-removebg-preview.png" alt="Description of Image" style="max-width: 100%; height: auto;">
+            </section>
+
+            <section>
+                <h1>States</h1>
+                <pre class="code-wrapper" style="width: 1000px;">
+                    <code
+                      class="language-jsx"
+                    >
+    const Room = () => {
+        const [temperature, setTemperature] = useState(28); 
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;Температура в комнате: {temperature}°C&lt;/h1&gt;
+                &lt;button
+                    onClick={() =&gt; setTemperature(temperature + 1)}
+                &gt;↑&lt;/button&gt;
+                &lt;button
+                 onClick={() =&gt; setTemperature(temperature - 1)}&gt;↓&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <h1>States</h1>
+                <img src="images/termostat2.png" alt="Description of Image" style="max-width: 100%; height: auto;">
+            </section>
+
+            <section>
+                <h1>States</h1>
+                <div style="position: relative;">
+                    <pre class="code-wrapper" style="width: 1000px;">
+                        <code
+                        data-line-numbers="3"
+                          class="language-jsx"
+                        >
+    const Room = () => {
+        const [temperature, setTemperature] = useState(28); 
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;Температура в комнате: {temperature}°C&lt;/h1&gt;
+                &lt;button
+                    onClick={() =&gt; setTemperature(temperature + 1)}
+                &gt;↑&lt;/button&gt;
+                &lt;button
+                    onClick={() =&gt; setTemperature(temperature - 1)}&gt;↓&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+                        </code>
+                    </pre>
+                    <span style="
+                        position: absolute;
+                        top: 90px;
+                        left: 300px;
+                        display: flex;
+                        flex-direction: column;
+                        "
+                    >
+                        ☝️
+                        <span style="background-color: blue; width: 100px; height: 50px;">READ</span>
+                    </span>
+                    <span style="
+                        position: absolute;
+                        top: 90px;
+                        left: 450px;
+                        display: flex;
+                        flex-direction: column;
+                        "
+                    >
+                        ☝️
+                        <span style="background-color: blue; width: 120px; height: 50px;">WRITE</span>
+                    </span>
+                </div>
+                
+            </section>
+
+<section>
+                <h1>States</h1>
+                <div style="position: relative;">
+                    <pre class="code-wrapper" style="width: 1000px;">
+                        <code
+                        data-line-numbers="8|11"
+                          class="language-jsx"
+                        >
+    const Room = () => {
+        const [temperature, setTemperature] = useState(28); 
+        return (
+            &lt;div&gt;
+                &lt;h1&gt;Температура в комнате: {temperature}°C&lt;/h1&gt;
+                &lt;button
+                    onClick={() =&gt; setTemperature(temperature + 1)}
+                &gt;↑&lt;/button&gt;
+                &lt;button
+                    onClick={() =&gt; setTemperature(temperature - 1)}&gt;↓&lt;/button&gt;
+            &lt;/div&gt;
+        )
+    }
+                        </code>
+                    </pre>
+                </div>
+            </section>
+            <section>
+                <section>
+                    <div class="tenor-gif-embed" data-postid="5445371" data-share-method="host" data-aspect-ratio="1.22549" data-width="100%"><a href="https://tenor.com/view/knob-dial-temp-temperature-thermostat-gif-5445371">Knob Dial GIF</a>from <a href="https://tenor.com/search/knob-gifs">Knob GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+                </section>
+                <section>
+                    <div class="tenor-gif-embed" data-postid="14389397" data-share-method="host" data-aspect-ratio="1" data-width="100%"><a href="https://tenor.com/view/kstr-kochstrasse-counting-numbers-countdown-gif-14389397">Kstr Kochstrasse GIF</a>from <a href="https://tenor.com/search/kstr-gifs">Kstr GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+                </section>
+            </section>
+
+            <section>
+                <img src="images/termostat3.png" alt="Description of Image" style="max-width: 100%; height: auto;">
+            </section>
+            <!-- slide 2 -->
+            <section>
+                <section><h1>Props</h1></section>
+                <section>
+                    <img src="images/lecture-props.svg" alt="Description of Image" style="max-width: 100%; height: auto;">
+                </section>
+            </section>
+            
+
+            <!-- slide 3 -->
+            <section>
+                <h2>Props</h2>
+                <p>This is the second slide.</p>
+            
+                <pre class="code-wrapper">
+                    <code
+                      data-line-numbers="1-10|5-5|12-15|16-19"
+                      class="language-jsx"
+                    >
+    const LockersParentComponent = () => {
+        return (
+            <div>
+                &lt;Locker label="Bauyrzhan" /&gt;
+                &lt;Locker label="Jarasar" /&gt;
+                &lt;Locker label="Alibek" /&gt;
+            </div>
+        )
+    }
+
+            // Props object
+            {
+                label: 'Bauyrzhan'
+            }
+
+    const Locker = (props) => {
+        return &lt;div&gt;{props.label}&lt;/div&gt;
+    }
+
+
+
+
+
+                    </code>
+                </pre>
+            </section>
+        
+            <!-- slide 4 -->
+            <section>
+                <h2>Props</h2>
+                <p>Using Argument Destructuring</p>
+            
+                <pre class="code-wrapper">
+                    <code
+                      data-line-numbers="1-10|13-25"
+                      class="language-jsx"
+                    >
+    const LockersParentComponent = () => {
+        return (
+            <div>
+                &lt;Locker label="Bauyrzhan" color="red" /&gt;
+                &lt;Locker label="Jarasar" color="green" /&gt;
+                &lt;Locker label="Alibek" color="black" /&gt;
+            </div>
+        )
+    }
+
+
+    const Locker = ({ label, color }) => {
+        // const { label, color } = props;
+        return (
+            &lt;div 
+                style={{
+                    backgroundColor: {color}
+                }}
+            &gt;
+                {label}
+            &lt;/div&gt;
+        )
+    }
+
+
+
+
+
+                    </code>
+                </pre>
+            </section>
+            <!-- Slide 5: Child to Parent communication -->
+            <section style="top: 0">
+                <pre class="code-wrapper" style="width: 1200px; height: 600px;">
+                    <code
+                      data-line-numbers="3-7|9-17|10-16|11|12|13|14|19-25|21-23|22"
+                      class="language-jsx"
+                    >    
+    const LockersComponent = () => {
+        const [lockers, setLockers] = useState([
+            { id: 1, label: 'Bauyrzhan', status: 'closed' },
+            { id: 2, label: 'Jarasar', status: 'open' },
+            // другие шкафчики
+        ]);
+    
+        const handleUpdate = (lockerId, newStatus) => {
+            setLockers(prevLockers =>
+                prevLockers.map(locker =>
+                    locker.id === lockerId ?
+                     { ...locker, status: newStatus }
+                      : locker
+                )
+            );
+        };
+    
+        return (
+            &lt;div&gt;
+                {lockers.map(locker =&gt; (
+                    &lt;Locker key={locker.id} locker={locker} onUpdate={handleUpdate} /&gt;
+                ))}
+            &lt;/div&gt;
+        );
+    };
+    
+    export default LockersComponent;
+                    </code>
+                </pre>
+            </section>
+            <!-- Slide 6 - Locker.js -->
+            <section style="top: 0">
+                <pre class="code-wrapper" style="width: 1200px; height: 600px;">
+                    <code
+                      data-line-numbers="5|14-19|17|16|8-11|10|5"
+                      class="language-jsx"
+                    >
+        // Locker.js                    
+        const Locker = ({ 
+                            locker,
+                            onUpdate
+                        }) => {
+            const { id, label, status } = locker;
+            const toggleStatus = () => {
+                const newStatus = status === 'closed' ? 'open' : 'closed';
+                onUpdate(id, newStatus);
+            };
+        
+            return (
+                <div>
+                    <p>{label} - {status}</p>
+                    <button
+                        onClick={toggleStatus}
+                    >
+                        {status === 'closed' ? 'Open' : 'Close'}
+                    </button>
+                </div>
+            );
+        };
+        
+        export default Locker;
+                    
+                    </code>
+                </pre>
+            </section>
+
+            <section>
+                <img src="images/props-child-to-parent.png" style="max-width: 100%; height: auto;">
+            </section>
+        </div>
+    </div>
+    <script src="node_modules/reveal.js/dist/reveal.js"></script>
+    <script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
+    <script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+    <script>
+        Reveal.initialize({
+            progress: true,
+            showSlideNumber: 'all',
+            plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+        });
+    </script>
+</body>
+</html>
