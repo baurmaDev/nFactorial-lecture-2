@@ -4,17 +4,17 @@
     <meta charset="utf-8">
     <title>My Presentation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css" id="theme">
-    <link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css" id="theme">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/monokai.min.css">
 </head>
 <body>
     <div class="reveal">
         <div class="slides">
             <!-- slide 1 -->
             <section>
-                <h1>My Presentation</h1>
-                <p>Welcome to my Reveal.js presentation!</p>
+                <h1>Props and State</h1>
+                <p>Harnessing the Power of Props, States, and Lifecycle Methods in React</p>
             </section>
 
             <!-- slide 2 -->
@@ -137,6 +137,10 @@
             <section>
                 <img src="images/termostat3.png" alt="Description of Image" style="max-width: 100%; height: auto;">
             </section>
+            <section>
+                <h3>State mutability</h3>
+                <img src="images/state-mutability.png" alt="Description of Image" style="max-width: 100%; height: auto;">
+            </section>
             <!-- slide 2 -->
             <section>
                 <section><h1>Props</h1></section>
@@ -225,87 +229,75 @@
                 </pre>
             </section>
             <!-- Slide 5: Child to Parent communication -->
-            <section style="top: 0">
-                <pre class="code-wrapper" style="width: 1200px; height: 600px;">
-                    <code
-                      data-line-numbers="3-7|9-17|10-16|11|12|13|14|19-25|21-23|22"
-                      class="language-jsx"
-                    >    
-    const LockersComponent = () => {
-        const [lockers, setLockers] = useState([
-            { id: 1, label: 'Bauyrzhan', status: 'closed' },
-            { id: 2, label: 'Jarasar', status: 'open' },
-            // другие шкафчики
-        ]);
-    
-        const handleUpdate = (lockerId, newStatus) => {
-            setLockers(prevLockers =>
-                prevLockers.map(locker =>
-                    locker.id === lockerId ?
-                     { ...locker, status: newStatus }
-                      : locker
-                )
-            );
-        };
-    
-        return (
-            &lt;div&gt;
-                {lockers.map(locker =&gt; (
-                    &lt;Locker key={locker.id} locker={locker} onUpdate={handleUpdate} /&gt;
-                ))}
-            &lt;/div&gt;
-        );
-    };
-    
-    export default LockersComponent;
-                    </code>
-                </pre>
-            </section>
-            <!-- Slide 6 - Locker.js -->
-            <section style="top: 0">
-                <pre class="code-wrapper" style="width: 1200px; height: 600px;">
-                    <code
-                      data-line-numbers="5|14-19|17|16|8-11|10|5"
-                      class="language-jsx"
-                    >
-        // Locker.js                    
-        const Locker = ({ 
-                            locker,
-                            onUpdate
-                        }) => {
-            const { id, label, status } = locker;
-            const toggleStatus = () => {
-                const newStatus = status === 'closed' ? 'open' : 'closed';
-                onUpdate(id, newStatus);
-            };
-        
-            return (
-                <div>
-                    <p>{label} - {status}</p>
-                    <button
-                        onClick={toggleStatus}
-                    >
-                        {status === 'closed' ? 'Open' : 'Close'}
-                    </button>
-                </div>
-            );
-        };
-        
-        export default Locker;
-                    
-                    </code>
-                </pre>
-            </section>
-
+            
             <section>
-                <img src="images/props-child-to-parent.png" style="max-width: 100%; height: auto;">
+                <div style="display: flex; justify-content: space-between; text-align: center;">
+                    <div style="display: flex; flex-direction: column; color: black; padding: 5px; font-size: 18px; flex: 1;">
+                        <pre class="code-wrapper" style="font-size: 20px;">
+                            <code class="language-jsx" style="font-size: 20px;">
+useEffect(() => {
+    console.log("Hi!")
+}, [])
+                            </code>
+                        </pre>
+                        <div style="padding: 20px; background-color: aqua;">
+                            Second argument is []
+                        </div>
+                        <div style="padding: 20px; background-color: whitesmoke;">
+                            Called after first render
+                        </div>
+                        <div style="padding: 20px; background-color: whitesmoke;">
+                            Never called again
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; color: black; padding: 5px; font-size: 18px; flex: 1;">
+                        <pre class="code-wrapper" style="font-size: 20px;">
+                            <code class="language-jsx" style="font-size: 20px;">
+useEffect(() => {
+    console.log("Hi!")
+})
+                            </code>
+                        </pre>
+                        <div style="padding: 20px; background-color: aqua; color: black;">
+                            Second argument is -
+                        </div>
+                        <div style="padding: 20px; background-color: whitesmoke;">
+                            Called after first render
+                        </div>
+                        <div style="padding: 20px; background-color: whitesmoke;">
+                            Also called after every rerender
+                        </div>
+                    </div>
+                    <div style="display: flex; flex-direction: column; color: black; padding: 5px; font-size: 18px; flex: 1;">
+                        <pre class="code-wrapper" style="font-size: 20px;">
+                            <code class="language-jsx" style="font-size: 20px;">
+useEffect(() => {
+    console.log("Hi!")
+}, [temperature])
+                            </code>
+                        </pre>
+                        <div style="padding: 20px; background-color: aqua; color: black;">
+                            Second argument is [temperature]
+                        </div>
+                        <div style="padding: 20px; background-color: whitesmoke;">
+                            Called after first render
+                        </div>
+                        <div style="padding: 20px; background-color: whitesmoke;">
+                            Also called after rerenders if 'temperature' state changed
+                        </div>
+                    </div>
+                </div>
             </section>
+            <section>
+                <h1>Rakhmet :3</h1>
+            </section>
+            
         </div>
     </div>
-    <script src="node_modules/reveal.js/dist/reveal.js"></script>
-    <script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
-    <script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
-    <script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/notes/notes.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/markdown/markdown.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/plugin/highlight/highlight.min.js"></script>
     <script>
         Reveal.initialize({
             progress: true,
